@@ -21,10 +21,10 @@ export class ApiService {
   //API call for user login
   //Expects userDetails in params
   //Returns HTTP response
-  public userLogin(userDetails: any): Observable<any> {
+  public loginUser(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(`${apiUrl}/login`, { params: new HttpParams(userDetails) })
+      .post(`${apiUrl}/login`, userDetails)
       .pipe(catchError(this.handleError));
   }
 
