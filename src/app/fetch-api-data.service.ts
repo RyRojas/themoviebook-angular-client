@@ -13,7 +13,7 @@ const apiUrl = 'https://the-moviebook.herokuapp.com';
 @Injectable({
   providedIn: 'root',
 })
-export class apiService {
+export class ApiService {
   //Inject the HttpClient module to the constructor params
   //This wiill provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
