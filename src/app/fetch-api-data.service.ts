@@ -13,7 +13,7 @@ const apiUrl = 'https://the-moviebook.herokuapp.com';
 @Injectable({
   providedIn: 'root',
 })
-export class apiService {
+export class ApiService {
   //Inject the HttpClient module to the constructor params
   //This wiill provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
@@ -21,10 +21,9 @@ export class apiService {
   //API call for user login
   //Expects userDetails in params
   //Returns HTTP response
-  public userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
+  public loginUser(userDetails: any): Observable<any> {
     return this.http
-      .post(`${apiUrl}/login`, { params: new HttpParams(userDetails) })
+      .post(`${apiUrl}/login`, userDetails)
       .pipe(catchError(this.handleError));
   }
 
