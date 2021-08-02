@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 //Component Modules
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -24,6 +25,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { DirectorCardComponent } from './director-card/director-card.component';
 import { GenreCardComponent } from './genre-card/genre-card.component';
 import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
     DirectorCardComponent,
     GenreCardComponent,
     SynopsisCardComponent,
+    UserProfileComponent,
+    HeaderNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
