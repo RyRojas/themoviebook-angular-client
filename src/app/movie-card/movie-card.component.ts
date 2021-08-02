@@ -3,23 +3,28 @@ import { ApiService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorCardComponent } from '../director-card/director-card.component';
+import { GenreCardComponent } from '../genre-card/genre-card.component';
 
 interface Movie {
   _id: string;
   Title: string;
   Description: string;
-  Genre: Array<{
-    Name: string;
-    Description: string;
-  }>;
-  Director: {
-    Name: string;
-    Bio: string;
-    Birth: Date;
-    Death: Date;
-  };
+  Genre: Genre[];
+  Director: Director;
   ImagePath: string;
   Year: string;
+}
+
+interface Genre {
+  Name: string;
+  Description: string;
+}
+
+interface Director {
+  Name: string;
+  Bio: string;
+  Birth: Date;
+  Death: Date;
 }
 
 @Component({
@@ -75,12 +80,25 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
-  openDirectorCard(name: string, bio: string, birth: Date, death: Date) {
-    const birthDate = new Date(birth).toLocaleDateString(),
-      deathDate = death ? new Date(death).toLocaleDateString() : '';
+  openDirectorCard(director: Director) {
+    const convertedDirector = {
+      name: director.Name,
+      bio: director.Bio,
+      birth: new Date(director.Birth).toLocaleDateString(),
+      death: director.Death
+        ? new Date(director.Death).toLocaleDateString()
+        : '',
+    };
 
     this.dialog.open(DirectorCardComponent, {
-      data: { name, bio, birthDate, deathDate },
+      data: convertedDirector,
+    });
+  }
+
+  openGenreCard(genres: Genre[]) {
+    console.log(genres);
+    this.dialog.open(GenreCardComponent, {
+      data: genres,
     });
   }
 }

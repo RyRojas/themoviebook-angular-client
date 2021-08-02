@@ -22,6 +22,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { DirectorCardComponent } from './director-card/director-card.component';
+import { GenreCardComponent } from './genre-card/genre-card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DirectorCardComponent } from './director-card/director-card.component';
     MovieCardComponent,
     WelcomePageComponent,
     DirectorCardComponent,
+    GenreCardComponent,
   ],
   imports: [
     BrowserModule,

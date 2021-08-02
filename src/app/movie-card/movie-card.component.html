@@ -22,19 +22,19 @@
   <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }} Poster" />
 
   <mat-card-actions>
-    <button mat-button type="button" color="primary">Genre</button>
+    <button
+      mat-button
+      type="button"
+      color="primary"
+      (click)="openGenreCard(movie.Genre)"
+    >
+      Genre
+    </button>
     <button
       mat-button
       type="button"
       color="accent"
-      (click)="
-        openDirectorCard(
-          movie.Director.Name,
-          movie.Director.Bio,
-          movie.Director.Birth,
-          movie.Director.Death
-        )
-      "
+      (click)="openDirectorCard(movie.Director)"
     >
       Director
     </button>
