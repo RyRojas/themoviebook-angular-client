@@ -23,7 +23,21 @@
 
   <mat-card-actions>
     <button mat-button type="button" color="primary">Genre</button>
-    <button mat-button type="button" color="accent">Director</button>
+    <button
+      mat-button
+      type="button"
+      color="accent"
+      (click)="
+        openDirectorCard(
+          movie.Director.Name,
+          movie.Director.Bio,
+          movie.Director.Birth,
+          movie.Director.Death
+        )
+      "
+    >
+      Director
+    </button>
     <button mat-button type="button" color="warn">Synopsis</button>
   </mat-card-actions>
 </mat-card>

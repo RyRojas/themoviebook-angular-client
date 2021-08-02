@@ -1,6 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DirectorCardComponent } from '../director-card/director-card.component';
+
+interface Movie {
+  _id: string;
+  Title: string;
+  Description: string;
+  Genre: Array<{
+    Name: string;
+    Description: string;
+  }>;
+  Director: {
+    Name: string;
+    Bio: string;
+    Birth: Date;
+    Death: Date;
+  };
+  ImagePath: string;
+  Year: string;
+}
 
 @Component({
   selector: 'app-movie-card',
@@ -8,10 +28,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
-  movies: any[] = [];
+  movies: Movie[] = [];
   favMovies: string[] = [];
 
-  constructor(public fetchApiData: ApiService, public snackBar: MatSnackBar) {}
+  constructor(
+    public fetchApiData: ApiService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getMovies();
@@ -49,5 +73,14 @@ export class MovieCardComponent implements OnInit {
         this.filterLocalFavorites(id, false);
       });
     }
+  }
+
+  openDirectorCard(name: string, bio: string, birth: Date, death: Date) {
+    const birthDate = new Date(birth).toLocaleDateString(),
+      deathDate = death ? new Date(death).toLocaleDateString() : '';
+
+    this.dialog.open(DirectorCardComponent, {
+      data: { name, bio, birthDate, deathDate },
+    });
   }
 }
