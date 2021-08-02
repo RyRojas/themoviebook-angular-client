@@ -6,7 +6,6 @@ import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
-  HttpParams,
 } from '@angular/common/http';
 
 const apiUrl = 'https://the-moviebook.herokuapp.com';
@@ -116,7 +115,7 @@ export class ApiService {
     return this.http
       .post(
         `${apiUrl}/users/${user}/favs`,
-        { movieID: movieID },
+        { MovieID: movieID },
         { headers: new HttpHeaders({ Authorization: `Bearer ${token}` }) }
       )
       .pipe(catchError(this.handleError));

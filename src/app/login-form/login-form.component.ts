@@ -38,7 +38,7 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['movies']);
       },
       (response) => {
-        //Failed
+        //Failure
         console.log(response);
         this.snackBar.open(response, 'OK', {
           duration: 2000,
