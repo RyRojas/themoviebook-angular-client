@@ -41,6 +41,13 @@
     >
       Director
     </button>
-    <button mat-button type="button" color="warn">Synopsis</button>
+    <button
+      mat-button
+      type="button"
+      color="warn"
+      (click)="openSynopsisCard(movie.Description)"
+    >
+      Synopsis
+    </button>
   </mat-card-actions>
 </mat-card>

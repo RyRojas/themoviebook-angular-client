@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
+import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
 
 interface Movie {
   _id: string;
@@ -96,9 +97,14 @@ export class MovieCardComponent implements OnInit {
   }
 
   openGenreCard(genres: Genre[]) {
-    console.log(genres);
     this.dialog.open(GenreCardComponent, {
       data: genres,
+    });
+  }
+
+  openSynopsisCard(synopsis: string) {
+    this.dialog.open(SynopsisCardComponent, {
+      data: synopsis,
     });
   }
 }

@@ -23,6 +23,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { DirectorCardComponent } from './director-card/director-card.component';
 import { GenreCardComponent } from './genre-card/genre-card.component';
+import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GenreCardComponent } from './genre-card/genre-card.component';
     WelcomePageComponent,
     DirectorCardComponent,
     GenreCardComponent,
+    SynopsisCardComponent,
   ],
   imports: [
     BrowserModule,
