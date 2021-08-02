@@ -19,7 +19,10 @@
     </button>
   </mat-card-header>
 
-  <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }} Poster" />
+  <img
+    src="{{ 'assets/images/' + movie.ImagePath }}"
+    alt="{{ movie.Title }} Poster"
+  />
 
   <mat-card-actions>
     <button
