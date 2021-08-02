@@ -13,7 +13,7 @@ export class UserRegistrationFormComponent implements OnInit {
     Username: '',
     Password: '',
     Email: '',
-    Birthday: '',
+    Birth: '',
   };
 
   constructor(

@@ -1,12 +1,12 @@
 <mat-card-header>
-  <mat-card-title>Sign Up!</mat-card-title>
+  <mat-card-title>Update Your Profile</mat-card-title>
 </mat-card-header>
 <mat-card-content>
   <form>
     <mat-form-field>
       <input
         matInput
-        [(ngModel)]="userData.Username"
+        [(ngModel)]="userInput.Username || userData.Username"
         placeholder="Username"
         autocomplete="username"
         type="text"
@@ -17,10 +17,23 @@
     <mat-form-field>
       <input
         matInput
-        [(ngModel)]="userData.Password"
+        [(ngModel)]="userInput.Password"
         placeholder="Password"
         autocomplete="new-password"
         type="password"
+        name="Password"
+        minlength="8"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="userInput.ConfirmPassword"
+        placeholder="Password"
+        autocomplete="new-password"
+        type="password"
+        minlength="8"
         name="Password"
         required
       />
@@ -28,28 +41,30 @@
     <mat-form-field>
       <input
         matInput
-        [(ngModel)]="userData.Email"
+        [(ngModel)]="userInput.Email || userData.Email"
         placeholder="Email"
         autocomplete="email"
         type="email"
         name="Email"
+        value="userData.Email"
         required
       />
     </mat-form-field>
     <mat-form-field>
       <input
         matInput
-        [(ngModel)]="userData.Birth"
+        [(ngModel)]="userInput.Birth || userData.Birth"
         placeholder="Birthday"
         autocomplete="bday"
         type="date"
         name="Birthday"
+        required
       />
     </mat-form-field>
   </form>
 </mat-card-content>
 <mat-card-actions>
-  <button mat-raised-button (click)="registerUser()" color="primary">
-    Sign Up
+  <button mat-raised-button type="submit" (click)="editUser()" color="primary">
+    Submit
   </button>
 </mat-card-actions>
