@@ -1,7 +1,11 @@
 <header>
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" class="nav" role="heading" aria-level="1">
     <span>theMovieBook</span>
-    <button type="button" (click)="openProfileDialog()">Profile</button>
-    <button type="button" (click)="onLogout()">Logout</button>
+    <nav class="nav__actions">
+      <button mat-button type="button" (click)="openProfileDialog()">
+        Profile
+      </button>
+      <button mat-button type="button" (click)="onLogout()">Logout</button>
+    </nav>
   </mat-toolbar>
 </header>
