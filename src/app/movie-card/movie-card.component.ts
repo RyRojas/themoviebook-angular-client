@@ -93,18 +93,21 @@ export class MovieCardComponent implements OnInit {
 
     this.dialog.open(DirectorCardComponent, {
       data: convertedDirector,
+      maxWidth: '75ch',
     });
   }
 
   openGenreCard(genres: Genre[]) {
     this.dialog.open(GenreCardComponent, {
       data: genres,
+      maxWidth: '75ch',
     });
   }
 
   openSynopsisCard(synopsis: string) {
     this.dialog.open(SynopsisCardComponent, {
       data: synopsis,
+      maxWidth: '75ch',
     });
   }
 }
