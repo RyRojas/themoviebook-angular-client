@@ -52,11 +52,26 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
+  //Creates request body with only provided values
+  createPutBody() {
+    const data = this.userInput;
+
+    const formData = {
+      ...(data.Username && { Username: data.Username }),
+      ...(data.Password && { Password: data.Password }),
+      ...(data.Email && { Email: data.Email }),
+      ...(data.Birth && { Birth: data.Birth }),
+    };
+
+    return formData;
+  }
+
   editUser() {
-    this.fetchApiData.editUser(this.userInput).subscribe(
+    const request = this.createPutBody();
+
+    this.fetchApiData.editUser(request).subscribe(
       //Successful update
       (response) => {
-        console.log(response);
         this.dialogRef.close();
 
         //If username changed, change username in local storage
@@ -69,7 +84,6 @@ export class UserProfileComponent implements OnInit {
       },
       //Failed update
       (response) => {
-        console.log(response);
         this.snackBar.open(response, 'OK', {
           duration: 2000,
         });
