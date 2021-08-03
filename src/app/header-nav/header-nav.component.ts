@@ -14,7 +14,10 @@ export class HeaderNavComponent implements OnInit {
   ngOnInit(): void {}
 
   openProfileDialog() {
-    this.dialog.open(UserProfileComponent);
+    this.dialog.open(UserProfileComponent, {
+      width: '300px',
+      panelClass: 'profile-dialog',
+    });
   }
 
   onLogout() {
