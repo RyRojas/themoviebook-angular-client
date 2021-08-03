@@ -17,14 +17,14 @@ export class WelcomePageComponent implements OnInit {
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       //Assign dialog width
-      width: '280px',
+      width: '300px',
     });
   }
 
   openUserLoginDialog(): void {
     this.dialog.open(LoginFormComponent, {
       //Assign dialog width
-      width: '280px',
+      width: '300px',
     });
   }
 
