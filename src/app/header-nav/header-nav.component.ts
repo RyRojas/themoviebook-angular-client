@@ -13,6 +13,19 @@ export class HeaderNavComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //Checks auth and route to determine whether to render submenu
+  isAuth() {
+    if (localStorage.getItem('token')) {
+      return this.router.url === '/welcome'
+        ? this.router.navigate(['movies'])
+        : true;
+    } else {
+      return this.router.url === '/movies'
+        ? this.router.navigate(['welcome'])
+        : false;
+    }
+  }
+
   openProfileDialog() {
     this.dialog.open(UserProfileComponent, {
       width: '300px',
