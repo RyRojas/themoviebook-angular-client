@@ -13,7 +13,7 @@ export class UserRegistrationFormComponent implements OnInit {
     Username: '',
     Password: '',
     Email: '',
-    Birthday: '',
+    Birth: '',
   };
 
   constructor(
@@ -28,7 +28,6 @@ export class UserRegistrationFormComponent implements OnInit {
     this.fetchApiData.registerUser(this.userData).subscribe(
       (response) => {
         //Logic for successful registration goes here (to be implemented)
-        console.log(response);
         this.dialogRef.close();
         this.snackBar.open(response, 'OK', {
           duration: 2000,
@@ -36,7 +35,6 @@ export class UserRegistrationFormComponent implements OnInit {
       },
       (response) => {
         //Logic for failed registration (TBI)
-        console.log(response);
         this.snackBar.open(response, 'OK', {
           duration: 2000,
         });

@@ -6,7 +6,6 @@ import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
-  HttpParams,
 } from '@angular/common/http';
 
 const apiUrl = 'https://the-moviebook.herokuapp.com';
@@ -221,6 +220,8 @@ export class ApiService {
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
+    } else if (error.error.user === false) {
+      return throwError('Incorrect username or password.');
     } else {
       console.error(
         `Error status code ${error.status}, ` + `Error body is: ${error.error}`
