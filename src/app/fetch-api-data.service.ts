@@ -115,7 +115,7 @@ export class ApiService {
     return this.http
       .post(
         `${apiUrl}/users/${user}/favs`,
-        { MovieID: movieID },
+        { movieID: movieID },
         { headers: new HttpHeaders({ Authorization: `Bearer ${token}` }) }
       )
       .pipe(catchError(this.handleError));
@@ -220,6 +220,8 @@ export class ApiService {
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
+    } else if (error.error.user === false) {
+      return throwError('Incorrect username or password.');
     } else {
       console.error(
         `Error status code ${error.status}, ` + `Error body is: ${error.error}`

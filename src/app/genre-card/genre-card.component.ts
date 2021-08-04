@@ -17,7 +17,5 @@ export class GenreCardComponent implements OnInit {
     public genres: Array<Genre>
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.genres);
-  }
+  ngOnInit(): void {}
 }

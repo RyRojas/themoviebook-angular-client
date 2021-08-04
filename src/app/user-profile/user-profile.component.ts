@@ -39,9 +39,7 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser().subscribe(
       //Successful get request
       (response) => {
-        console.log(response);
         this.userData = response;
-        console.log(this.userData);
       },
       //Failed get
       (response) => {
