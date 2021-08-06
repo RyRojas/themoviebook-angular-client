@@ -35,6 +35,9 @@ export class UserProfileComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * Retrieve user info with api service
+   */
   getUser() {
     this.fetchApiData.getUser().subscribe(
       //Successful get request
@@ -50,7 +53,10 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  //Creates request body with only provided values
+  /**
+   * Converts user input into acceptable request body
+   * @returns Form data in expected format
+   */
   createPutBody() {
     const data = this.userInput;
 
@@ -64,6 +70,9 @@ export class UserProfileComponent implements OnInit {
     return formData;
   }
 
+  /**
+   * Edit user info via api service
+   */
   editUser() {
     const request = this.createPutBody();
 

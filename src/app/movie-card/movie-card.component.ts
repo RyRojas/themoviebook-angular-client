@@ -48,18 +48,29 @@ export class MovieCardComponent implements OnInit {
     this.getFavorites();
   }
 
+  /**
+   * Gets movies via api service
+   */
   getMovies() {
     this.fetchApiData.getMovies().subscribe((resp: any) => {
       this.movies = resp;
     });
   }
 
+  /**
+   * Retrieves user favorites via api service
+   */
   getFavorites() {
     this.fetchApiData.getFavorites().subscribe((resp: any) => {
       this.favMovies = resp.Favorites;
     });
   }
 
+  /**
+   * Filter local favorites
+   * @param id Movie ID
+   * @param isPresent Whether movie is already in favorites (avoids double checking)
+   */
   filterLocalFavorites(id: string, isPresent: boolean) {
     if (isPresent) {
       const movieIndex = this.favMovies.indexOf(id);
@@ -69,6 +80,10 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * Toggle favorite on movie
+   * @param id Movie ID
+   */
   toggleFavorite(id: string) {
     if (this.favMovies.includes(id)) {
       this.fetchApiData.deleteFavorite(id).subscribe(() => {
@@ -81,6 +96,10 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * Open director dialog box
+   * @param director Director object
+   */
   openDirectorCard(director: Director) {
     const convertedDirector = {
       name: director.Name,
@@ -97,6 +116,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Open Genre dialog box
+   * @param genres Array of Genre Objects
+   */
   openGenreCard(genres: Genre[]) {
     this.dialog.open(GenreCardComponent, {
       data: genres,
@@ -104,6 +127,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Open synopsis dialog box
+   * @param synopsis Movie description
+   */
   openSynopsisCard(synopsis: string) {
     this.dialog.open(SynopsisCardComponent, {
       data: synopsis,

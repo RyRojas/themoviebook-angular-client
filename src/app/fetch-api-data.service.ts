@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 
 const apiUrl = 'https://the-moviebook.herokuapp.com';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,9 +18,12 @@ export class ApiService {
   //This wiill provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
-  //API call for user login
-  //Expects userDetails in params
-  //Returns HTTP response
+  /**
+   * User Login
+   * @param userDetails
+   * @returns Plain text confirmation
+   * @category Login
+   */
   public loginUser(userDetails: any): Observable<any> {
     return this.http
       .post(`${apiUrl}/login`, userDetails)
@@ -30,9 +34,12 @@ export class ApiService {
   USER ENDPOINTS
   ***********/
 
-  //API call for user registration
-  //Expects userDetails object in body
-  //Returns HTTP response
+  /**
+   * User Registration
+   * @param userDetails
+   * @returns Plain text confirmation
+   * @category User
+   */
   public registerUser(userDetails: any): Observable<any> {
     return this.http
       .post(`${apiUrl}/users`, userDetails)
@@ -42,6 +49,12 @@ export class ApiService {
   //API call for retrieving user by username
   //Expects auth header
   //Returns JSON object with data for specified user
+
+  /**
+   * Get user
+   * @returns User object
+   * @category User
+   */
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -55,9 +68,12 @@ export class ApiService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  //API call for editing user info
-  //Expects body object featuring fields to update and auth header
-  //Returns plain text confirmation
+  /**
+   * Edit user info
+   * @param userDetails All fields optional
+   * @returns Plain text confirmation
+   * @category User
+   */
   public editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -71,9 +87,11 @@ export class ApiService {
       .pipe(catchError(this.handleError));
   }
 
-  //API call for deleting user
-  //Expects auth header
-  //Returns plain text confirmation
+  /**
+   * Delete user
+   * @returns Plain text confirmation
+   * @category User
+   */
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -91,9 +109,11 @@ export class ApiService {
   User Favorites
   ***/
 
-  //API call for retrieving user favorites
-  //Expects auth header
-  //Returns array of movie objects in JSON
+  /**
+   * Get User Favorites
+   * @returns Array of movie ids
+   * @category Favorites
+   */
   public getFavorites(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -105,9 +125,12 @@ export class ApiService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  //API call for adding movie to user favorites
-  //Expects movieID in body + auth header
-  //Returns plain text confirmation
+  /**
+   * Add Favorite
+   * @param movieID Movie ID string
+   * @returns Plain text confirmation
+   * @category Favorites
+   */
   public addFavorite(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -121,9 +144,12 @@ export class ApiService {
       .pipe(catchError(this.handleError));
   }
 
-  //API call for deleting movie from user favorites
-  //Expects movieID in body + auth header
-  //Returns plain text confirmation
+  /**
+   * Delete Favorite
+   * @param movieID Movie ID string
+   * @returns Plain text confirmation
+   * @category Favorites
+   */
   public deleteFavorite(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -139,9 +165,11 @@ export class ApiService {
   MOVIE ENDPOINTS
   ***********/
 
-  //API call for retrieving all movies
-  //Requires auth token in header
-  //Returns HTTP response with array of movies in body
+  /**
+   * Get Movies
+   * @returns Array of Movie Objects
+   * @category Movies
+   */
   public getMovies(): Observable<any> {
     const token = localStorage.getItem('token');
 
@@ -154,9 +182,12 @@ export class ApiService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  //API call for retrieving all movies
-  //Requires title in url and auth token in header
-  //Returns HTTP response with array of movies in body
+  /**
+   * Get Movies by Title
+   * @param title Title of movie
+   * @returns Array of Movies with matching titles
+   * @category Movies
+   */
   public getMoviesByTitle(title: string): Observable<any> {
     const token = localStorage.getItem('token');
 
@@ -173,9 +204,12 @@ export class ApiService {
   GENRE ENDPOINT
   ***********/
 
-  //API call for retrieving genre by name
-  //Requires genre in url and auth token in header
-  //Returns HTTP response with genre data in body
+  /**
+   * Get Genre
+   * @param genre Name of genre
+   * @returns Genre object
+   * @category Genres
+   */
   public getGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
 
@@ -192,9 +226,12 @@ export class ApiService {
   DIRECTOR ENDPOINT
   ***********/
 
-  //API call for retrieving director by name
-  //Requires director name in url and auth token in header
-  //Returns HTTP response with director data in body
+  /**
+   * Get Director
+   * @param director Name of director
+   * @returns Director object
+   * @category Directors
+   */
   public getDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
 
@@ -212,11 +249,24 @@ export class ApiService {
    * Reusable functions
    *
    ******/
+
+  /**
+   * Extract Response Data
+   * @param res Http Response
+   * @returns Response body
+   * @category Utils
+   */
   private extractResponseData(res: Response | {}): any {
     const body = res;
     return body || {};
   }
 
+  /**
+   * Error Handler
+   * @param error HttpErrorResponse
+   * @returns Error
+   * @category Utils
+   */
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
