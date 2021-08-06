@@ -13,7 +13,10 @@ export class HeaderNavComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  //Checks auth and route to determine whether to render submenu
+  /**
+   * Checks auth and route to determine whether to render submenu
+   * @returns Auth Status boolean
+   */
   isAuth() {
     if (localStorage.getItem('token')) {
       return this.router.url === '/welcome'
@@ -26,6 +29,9 @@ export class HeaderNavComponent implements OnInit {
     }
   }
 
+  /**
+   * Opens Edit Profile Dialog Box
+   */
   openProfileDialog() {
     this.dialog.open(UserProfileComponent, {
       width: '300px',
@@ -33,6 +39,9 @@ export class HeaderNavComponent implements OnInit {
     });
   }
 
+  /**
+   * Logs user out
+   */
   onLogout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
