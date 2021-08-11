@@ -1,27 +1,44 @@
-# ThemoviebookAngularClient
+# theMovieBook Angular Client
+
+A rebuild of theMovieBook's frontend using Angular. Built to a design spec, with most of the project's focus on porting functionality from the React version.
+
+[Live Project](https://ryrojas.github.io/themoviebook-angular-client)
+
+## Features
+
+- New users are able to register
+- Users are able to add to and remove from their favorites list.
+- Users are able to search for movie by title.
+- Users are able to see additional details about select movies.
+- Users are able to follow links within their selected movies to see more movies in the same genre or by the same director.
+- Users are able to edit any portion of their profile information.
+
+## Tech
+
+- Typescript
+- Angular
+- Angular Material
+
+## Dependencies
+
+- @angular/animations
+- @angular/cdk
+- @angular/common
+- @angular/compiler
+- @angular/core
+- @angular/forms
+- @angular/material
+- @angular/platform-browser
+- @angular/platform-browser-dynamic
+- @angular/router
+- rxjs
+- tslib
+- zone.js
+
+## Run it Locally
+
+1. Clone/download this repository
+2. Run `npm install`
+3. Run `ng serve --open`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
