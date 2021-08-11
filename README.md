@@ -8,9 +8,7 @@ A rebuild of theMovieBook's frontend using Angular. Built to a design spec, with
 
 - New users are able to register
 - Users are able to add to and remove from their favorites list.
-- Users are able to search for movie by title.
-- Users are able to see additional details about select movies.
-- Users are able to follow links within their selected movies to see more movies in the same genre or by the same director.
+- Users are able to see additional details (Director, Genre, Synopsis) about select movies.
 - Users are able to edit any portion of their profile information.
 
 ## Tech
